@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import Form from "./components/Form";
-import ProjectCard from "./components/ProjectCard"
+// import ProjectCard from "./components/ProjectCard"
 import Layout from "./components/Layout";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <Layout>
       <Container maxWidth="sm">
         <Form />
-        <ProjectCard />
+        {/* <ProjectCard /> */}
       </Container>
     </Layout>
   );
