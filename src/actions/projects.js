@@ -1,5 +1,5 @@
 import * as api from '../api';
-import { CREATE, FETCH_ALL } from '../utils/actionTypes';
+import { CREATE, DELETE, FETCH_ALL } from '../utils/actionTypes';
 
 export const getProjects = () => async (dispatch) => {
     try {
@@ -20,5 +20,15 @@ export const createProject = (post) => async (dispatch) => {
         dispatch({ type: CREATE, payload: data });
     } catch (error) {
         console.log(error.message);
+    }
+}
+
+export const deleteProject = (id) => async (dispatch) => {
+    try {
+        await api.deleteProject(id);
+
+        dispatch({type: DELETE, payload: id});
+    } catch (error) {
+        console.log(error);
     }
 }
