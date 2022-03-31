@@ -1,14 +1,24 @@
+import { useEffect } from "react";
 import { Container } from "@mui/material";
+import { useDispatch } from 'react-redux';
+
+import ProjectCard from "./components/ProjectCard"
 import Form from "./components/Form";
-// import ProjectCard from "./components/ProjectCard"
+import { getProjects } from "./actions/projects";
 import Layout from "./components/Layout";
 
 function App() {
+  const dispatch = useDispatch();
+  //call fetch projects api when dispatch function is called
+  useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
+
   return (
     <Layout>
       <Container maxWidth="sm">
         <Form />
-        {/* <ProjectCard /> */}
+        <ProjectCard />
       </Container>
     </Layout>
   );

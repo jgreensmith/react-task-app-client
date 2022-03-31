@@ -1,12 +1,12 @@
-
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { Button, FormControl, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
+import { createProject } from "../actions/projects";
 
 
 export default function Form() {
-    const contentType = 'application/json'
-    const [message, setMessage] = useState('')
+    const dispatch = useDispatch();
     const [form, setForm] = useState({
         title: '',
         message: '',
@@ -14,37 +14,29 @@ export default function Form() {
     })
 
 // add a project to the data base
-    const postData = async (form) => {
-        try {
-            const res = await fetch('/api/projects', {
-                method: 'POST',
-                headers: {
-                    Accept: contentType,
-                    'Content-Type': contentType,
-                },
-                body: JSON.stringify(form)
-            })
-            if (!res.ok) {
-                throw new Error(res.status)
-            }
-        } catch (error) {
-            setMessage('Failed to post Project')
-        }
-    }
+
 
     const handleChange = (e) => {
         const target = e.target
         const value = target.value
         const name = target.name
-
         setForm({
             ...form,
             [name]: value
         })
     }
+    const clear = () => {
+        setForm({
+            title: '',
+            message: '',
+            pals: 0
+        })
+    }
+
     const handleSubmit = (e) => {
-        e.preventDefault()
-        postData(form)
+        e.preventDefault();
+        dispatch(createProject(form));
+        clear();
     }
 
 
@@ -87,9 +79,8 @@ export default function Form() {
                     ))}
                     </Select>
                 </FormControl>
-                <p>{message}</p>
                 <Button  variant="contained" color="primary" size="large" type="submit" fullWidth sx={{p:2}}>Submit</Button>
-                <Button variant="text" color="secondary" size="small"  fullWidth sx={{p:2}}>Clear</Button>
+                <Button onClick={clear} variant="text" color="secondary" size="small"  fullWidth sx={{p:2}}>Clear</Button>
             </form>
         </Paper>
     )

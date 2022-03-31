@@ -1,4 +1,7 @@
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Menu, MenuItem, Stack, toolbarClasses, Typography } from "@mui/material";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Menu, MenuItem, Stack, toolbarClasses, Typography, CircularProgress } from "@mui/material";
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import TimerIcon from '@mui/icons-material/Timer';
@@ -6,13 +9,14 @@ import GroupIcon from '@mui/icons-material/Group';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import CommentIcon from '@mui/icons-material/Comment';
 import { ExpandMore } from "@mui/icons-material";
-import { useState } from "react";
 
 
-export default function ProjectCard({projects}) {
+export default function ProjectCard() {
+  //select projects array from redux store when page is loaded (useEffect on App.js)
+  const projects = useSelector((state) => state.projects);
   
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
   
   const handleDelete = () => {
 
@@ -25,9 +29,11 @@ export default function ProjectCard({projects}) {
     setAnchorEl(null);
   };
 
+
   
 
     return(
+      !projects.length ? <CircularProgress /> : (
         <Stack spacing={2}>
           {
             projects.map((project) => (
@@ -115,5 +121,6 @@ export default function ProjectCard({projects}) {
         
         
       </Stack> 
-    )
+      )
+    );
 }
