@@ -72,7 +72,7 @@ export default function ProjectCard({ project }) {
                         'aria-labelledby': 'basic-button',
                       }}
                     >
-                      <MenuItem onClick={handleClose}>Edit Project</MenuItem>
+                      <MenuItem onClick={() => setCurrentId(project._id)}>Edit Project</MenuItem>
                       <MenuItem onClick={() => dispatch(deleteProject(project._id))}>Delete Project</MenuItem>
                       <MenuItem onClick={handleClose}>Save Project</MenuItem>
                     </Menu>

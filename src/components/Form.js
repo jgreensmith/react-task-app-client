@@ -1,20 +1,25 @@
-import { useContext, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Button, FormControl, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
-import { createProject } from "../actions/projects";
+import { createProject, updateProject } from "../actions/projects";
 import { IdContext } from "../utils/IdContext";
 
 
 export default function Form() {
     const dispatch = useDispatch();
-    const { currentId, setCurrentId } = useContext(IdContext);
     const [form, setForm] = useState({
         title: '',
         message: '',
         pals: 0
     })
-
+    //update posts
+    const { currentId, setCurrentId } = useContext(IdContext);
+    const project = useSelector((state) => currentId ? state.projects.find((p) => p._id === currentId) : null )
+    
+    useEffect(() => {
+        if(project) setForm(project);
+    }, [project])
 // add a project to the data base
 
 
@@ -28,6 +33,7 @@ export default function Form() {
         })
     }
     const clear = () => {
+        setCurrentId(null);
         setForm({
             title: '',
             message: '',
@@ -37,7 +43,11 @@ export default function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createProject(form));
+        if(currentId) {
+            dispatch(updateProject(currentId, form));
+        } else {
+            dispatch(createProject(form));
+        }
         clear();
     }
 
