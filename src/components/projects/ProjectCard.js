@@ -20,7 +20,6 @@ export default function ProjectCard({ project }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     
-    
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -28,6 +27,14 @@ export default function ProjectCard({ project }) {
     const handleClose = () => {
       setAnchorEl(null);
     };
+    const handleDelete = (id) => {
+      setAnchorEl(null);
+      dispatch(deleteProject(id));
+    }
+    const handleEdit = (id) => {
+      setAnchorEl(null);
+      setCurrentId(id);
+    }
 
     return(
         <Card >
@@ -72,8 +79,8 @@ export default function ProjectCard({ project }) {
                         'aria-labelledby': 'basic-button',
                       }}
                     >
-                      <MenuItem onClick={() => setCurrentId(project._id)}>Edit Project</MenuItem>
-                      <MenuItem onClick={() => dispatch(deleteProject(project._id))}>Delete Project</MenuItem>
+                      <MenuItem onClick={() => handleEdit(project._id)}>Edit Project</MenuItem>
+                      <MenuItem onClick={() => handleDelete(project._id)}>Delete Project</MenuItem>
                       <MenuItem onClick={handleClose}>Save Project</MenuItem>
                     </Menu>
                     </>
