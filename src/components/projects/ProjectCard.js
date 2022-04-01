@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react"
+import { useDispatch } from "react-redux";
 
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Menu, MenuItem, Stack, toolbarClasses, Typography, CircularProgress } from "@mui/material";
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
@@ -10,34 +10,25 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import CommentIcon from '@mui/icons-material/Comment';
 import { ExpandMore } from "@mui/icons-material";
 
+import { deleteProject } from "../../actions/projects";
 
-export default function ProjectCard() {
-  //select projects array from redux store when page is loaded (useEffect on App.js)
-  const projects = useSelector((state) => state.projects);
+export default function ProjectCard({ project }) {
+
+    const dispatch = useDispatch();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    
+    
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
   
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  
-  const handleDelete = () => {
-
-  }
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-
-  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
 
     return(
-      !projects.length ? <CircularProgress /> : (
-        <Stack spacing={2}>
-          {
-            projects.map((project) => (
-              <Card key={project._id}>
+        <Card >
                 <CardHeader
                   avatar={
                     <Avatar  aria-label="recipe">
@@ -80,7 +71,7 @@ export default function ProjectCard() {
                       }}
                     >
                       <MenuItem onClick={handleClose}>Edit Project</MenuItem>
-                      <MenuItem onClick={() => handleDelete(project._id)}>Delete Project</MenuItem>
+                      <MenuItem onClick={() => dispatch(deleteProject(project._id))}>Delete Project</MenuItem>
                       <MenuItem onClick={handleClose}>Save Project</MenuItem>
                     </Menu>
                     </>
@@ -116,11 +107,6 @@ export default function ProjectCard() {
             {/* {message && <p>{message}</p>} */}
       
       </Card>
-            ))
-          }
-        
-        
-      </Stack> 
-      )
-    );
+    )
+    
 }

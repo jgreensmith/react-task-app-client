@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Container } from "@mui/material";
 import { useDispatch } from 'react-redux';
 
-import ProjectCard from "./components/ProjectCard"
+import Projects from "./components/projects/Projects";
 import Form from "./components/Form";
 import { getProjects } from "./actions/projects";
 import Layout from "./components/Layout";
@@ -18,7 +18,7 @@ function App() {
     <Layout>
       <Container maxWidth="sm">
         <Form />
-        <ProjectCard />
+        <Projects />
       </Container>
     </Layout>
   );
