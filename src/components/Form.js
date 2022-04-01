@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Button, FormControl, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import { createProject } from "../actions/projects";
+import { IdContext } from "../utils/IdContext";
 
 
 export default function Form() {
     const dispatch = useDispatch();
+    const { currentId, setCurrentId } = useContext(IdContext);
     const [form, setForm] = useState({
         title: '',
         message: '',

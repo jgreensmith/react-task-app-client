@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { useDispatch } from "react-redux";
 
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Menu, MenuItem, Stack, toolbarClasses, Typography, CircularProgress } from "@mui/material";
@@ -11,9 +11,11 @@ import CommentIcon from '@mui/icons-material/Comment';
 import { ExpandMore } from "@mui/icons-material";
 
 import { deleteProject } from "../../actions/projects";
+import { IdContext } from "../../utils/IdContext";
 
 export default function ProjectCard({ project }) {
 
+    const { setCurrentId } = useContext(IdContext);
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
