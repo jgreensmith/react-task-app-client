@@ -6,7 +6,7 @@ import { createProject, updateProject } from "../actions/projects";
 import { IdContext } from "../utils/IdContext";
 
 
-export default function Form() {
+export default function Form({ setModelOpen }) {
     const dispatch = useDispatch();
     const [form, setForm] = useState({
         title: '',
@@ -39,6 +39,7 @@ export default function Form() {
             message: '',
             pals: 0
         })
+        setModelOpen(false);
     }
 
     const handleSubmit = (e) => {
