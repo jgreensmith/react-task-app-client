@@ -12,6 +12,8 @@ import SvgButton from "./components/SvgButton";
 import { Box } from "@mui/system";
 import { ModalContext } from "./utils/ModalContext";
 
+import "./App.css";
+
 Modal.setAppElement("body");
 
 
@@ -38,8 +40,8 @@ function App() {
       <Modal 
         isOpen={modalOpen}
         onRequestClose={() => setModalOpen(false)}
-        // className={styles.modal}
-        // overlayClassName={styles.overlay}
+        className='modal'
+        overlayClassName='overlay'
       >
         <Form />
       </Modal>

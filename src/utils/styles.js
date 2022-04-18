@@ -113,6 +113,11 @@ export const ProfileImg = styled("img")({
 
 //containers
 
+export const InputContainer = styled('div')({
+  paddingRight: '15px',
+  width: '100%'
+});
+
 export const CenteredGrid = styled(Grid)({
   display: 'flex', 
   justifyContent: 'center', 

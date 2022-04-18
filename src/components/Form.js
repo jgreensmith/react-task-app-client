@@ -5,6 +5,7 @@ import { Button, FormControl, InputLabel, MenuItem, Paper, Select, TextField, Ty
 import { createProject, updateProject } from "../actions/projects";
 import { IdContext } from "../utils/IdContext";
 import { ModalContext } from "../utils/ModalContext";
+import { InputContainer } from "../utils/styles";
 
 
 export default function Form() {
@@ -57,44 +58,50 @@ export default function Form() {
 
 
     return(
-        <Paper sx={{mb: 3}}>
+        <Paper sx={{ mb: 3, p: 3 }}>
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                 <Typography variant="h6">Find some Pals for your Project</Typography>
-                <TextField 
-                    name="title"
-                    value={form.title}
-                    variant="outlined"
-                    label="Title"
-                    fullWidth
-                    sx={{p:2}}
-                    onChange={handleChange}
-                />
-                <TextField
-                    name="message"
-                    value={form.message}
-                    variant="outlined"
-                    label="Message"
-                    fullWidth
-                    sx={{p:2}}
-                    onChange={handleChange}
-                />
-                <FormControl fullWidth sx={{p:2}}>
-                    <InputLabel id="demo-simple-select-label">Pals</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        name="pals"
-                        value={form.pals}
-                        label="Pals"
+                <InputContainer>
+                    <TextField 
+                        name="title"
+                        value={form.title}
+                        variant="outlined"
+                        label="Title"
+                        fullWidth
+                        sx={{m:2}}
                         onChange={handleChange}
-                    >
-                    {[...Array(100).keys()].map((x) => (
-                        <MenuItem key={x + 1} value={x + 1}>
-                            {x + 1}
-                        </MenuItem>
-                    ))}
-                    </Select>
-                </FormControl>
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <TextField
+                        name="message"
+                        value={form.message}
+                        variant="outlined"
+                        label="Message"
+                        fullWidth
+                        sx={{m:2}}
+                        onChange={handleChange}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <FormControl fullWidth sx={{m:2}}>
+                        <InputLabel id="demo-simple-select-label">Pals</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="pals"
+                            value={form.pals}
+                            label="Pals"
+                            onChange={handleChange}
+                        >
+                        {[...Array(100).keys()].map((x) => (
+                            <MenuItem key={x + 1} value={x + 1}>
+                                {x + 1}
+                            </MenuItem>
+                        ))}
+                        </Select>
+                    </FormControl>
+                </InputContainer>
                 <Button  variant="contained" color="primary" size="large" type="submit" fullWidth sx={{p:2}}>Submit</Button>
                 <Button onClick={clear} variant="text" color="secondary" size="small"  fullWidth sx={{p:2}}>Clear</Button>
             </form>
