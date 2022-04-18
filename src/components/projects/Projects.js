@@ -14,7 +14,7 @@ export default function Projects() {
   return (
     
         !projects.length ? <CircularProgress /> : (
-          <Stack spacing={2}>
+          <Stack spacing={2} sx={{mb: 2}}>
             { projects.map((project) => (
                 <div key={project._id} >
                     <ProjectCard project={project} />
