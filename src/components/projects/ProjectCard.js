@@ -12,10 +12,13 @@ import { ExpandMore } from "@mui/icons-material";
 
 import { deleteProject } from "../../actions/projects";
 import { IdContext } from "../../utils/IdContext";
+import { ModalContext } from "../../utils/ModalContext";
 
 export default function ProjectCard({ project }) {
 
     const { setCurrentId } = useContext(IdContext);
+    const { setModalOpen } = useContext(ModalContext);
+
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -34,6 +37,7 @@ export default function ProjectCard({ project }) {
     const handleEdit = (id) => {
       setAnchorEl(null);
       setCurrentId(id);
+      setModalOpen(true);
     }
 
     return(

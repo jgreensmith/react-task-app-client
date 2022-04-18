@@ -10,6 +10,7 @@ import Layout from "./components/Layout";
 import { IdContext } from "./utils/IdContext";
 import SvgButton from "./components/SvgButton";
 import { Box } from "@mui/system";
+import { ModalContext } from "./utils/ModalContext";
 
 Modal.setAppElement("body");
 
@@ -17,7 +18,7 @@ Modal.setAppElement("body");
 function App() {
   const dispatch = useDispatch();
   const { currentId } = useContext(IdContext);
-  const [modalOpen, setModalOpen] = useState(false);
+  const { modalOpen, setModalOpen } = useContext(ModalContext);
 
   //call fetch projects api when dispatch function is called
   useEffect(() => {
@@ -32,7 +33,7 @@ function App() {
             Need some pals for my project
           </SvgButton>
         </Box>
-        <Projects />
+        <Projects  />
       </Container>
       <Modal 
         isOpen={modalOpen}
@@ -40,7 +41,7 @@ function App() {
         // className={styles.modal}
         // overlayClassName={styles.overlay}
       >
-        <Form setModalOpen={setModalOpen} />
+        <Form />
       </Modal>
     </Layout>
   );

@@ -9,15 +9,18 @@ import App from './App';
 import reducers from './reducers';
 import reportWebVitals from './reportWebVitals';
 import IdContextProvider from './utils/IdContext';
+import ModalContextProvider from './utils/ModalContext';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 
 ReactDOM.render(
   <Provider store={store}>
-    <IdContextProvider>
-      <App />
-    </IdContextProvider>
+    <ModalContextProvider>
+      <IdContextProvider>
+        <App />
+      </IdContextProvider>
+    </ModalContextProvider>
   </Provider>,
   document.getElementById('root')
 );

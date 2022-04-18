@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, FormControl, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import { createProject, updateProject } from "../actions/projects";
 import { IdContext } from "../utils/IdContext";
+import { ModalContext } from "../utils/ModalContext";
 
 
-export default function Form({ setModelOpen }) {
+export default function Form() {
     const dispatch = useDispatch();
     const [form, setForm] = useState({
         title: '',
@@ -15,6 +16,8 @@ export default function Form({ setModelOpen }) {
     })
     //update posts
     const { currentId, setCurrentId } = useContext(IdContext);
+    const { setModalOpen } = useContext(ModalContext);
+
     const project = useSelector((state) => currentId ? state.projects.find((p) => p._id === currentId) : null )
     
     useEffect(() => {
@@ -39,7 +42,7 @@ export default function Form({ setModelOpen }) {
             message: '',
             pals: 0
         })
-        setModelOpen(false);
+        setModalOpen(false);
     }
 
     const handleSubmit = (e) => {
