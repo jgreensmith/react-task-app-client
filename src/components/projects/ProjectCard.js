@@ -63,8 +63,8 @@ export default function ProjectCard({ project }) {
                   }
                   action={
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <div style={{padding: '18px 10px 5px 10px'}}>
-                        <Box sx={{ width: '200px' }}>
+                      <div style={{padding: '18px 10px 5px 10px', width: '100%'}}>
+                        <Box sx={{ width: { sm: '200px', vs: '150px', xs: '100px' } }}>
                           <LinearProgressWithLabel value={progress} project={project} />
                         </Box>
                       </div>
