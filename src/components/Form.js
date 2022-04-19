@@ -14,7 +14,7 @@ import { InputContainer } from "../utils/styles";
 
 export default function Form() {
     const dispatch = useDispatch();
-    //const [value, setValue] = useState(new Date());
+    const [value, setValue] = useState(new Date());
 
     const [form, setForm] = useState({
         title: '',
@@ -116,8 +116,10 @@ export default function Form() {
                             renderInput={(props) => <TextField {...props} />}
                             label="Project Deadline"
                             name='date'
-                            value={form.date}
-                            onChange={handleChange}
+                            value={value}
+                            onChange={(newValue) => {
+                                setValue(newValue);
+                            }}
                         />
                     </LocalizationProvider>
                 </div>
