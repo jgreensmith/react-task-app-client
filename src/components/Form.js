@@ -2,6 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Button, FormControl, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+
 import { createProject, updateProject } from "../actions/projects";
 import { IdContext } from "../utils/IdContext";
 import { ModalContext } from "../utils/ModalContext";
@@ -10,11 +14,14 @@ import { InputContainer } from "../utils/styles";
 
 export default function Form() {
     const dispatch = useDispatch();
+    //const [value, setValue] = useState(new Date());
+
     const [form, setForm] = useState({
         title: '',
         message: '',
-        pals: 0
-    })
+        pals: 0,
+        date: new Date()
+    });
     //update posts
     const { currentId, setCurrentId } = useContext(IdContext);
     const { setModalOpen } = useContext(ModalContext);
@@ -41,7 +48,8 @@ export default function Form() {
         setForm({
             title: '',
             message: '',
-            pals: 0
+            pals: 0,
+            date: new Date()
         })
         setModalOpen(false);
     }
@@ -58,7 +66,7 @@ export default function Form() {
 
 
     return(
-        <Paper sx={{ mb: 3, p: 3 }}>
+        <Paper sx={{ mb: 3, p: 3, width: { sm: '500px', vs: '350px', xs: '300px'} }}>
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
                 <Typography variant="h6">Find some Pals for your Project</Typography>
                 <InputContainer>
@@ -102,6 +110,17 @@ export default function Form() {
                         </Select>
                     </FormControl>
                 </InputContainer>
+                <div style={{ padding: '5px 0 15px 15px'}}>
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DateTimePicker
+                            renderInput={(props) => <TextField {...props} />}
+                            label="Project Deadline"
+                            name='date'
+                            value={form.date}
+                            onChange={handleChange}
+                        />
+                    </LocalizationProvider>
+                </div>
                 <Button  variant="contained" color="primary" size="large" type="submit" fullWidth sx={{p:2}}>Submit</Button>
                 <Button onClick={clear} variant="text" color="secondary" size="small"  fullWidth sx={{p:2}}>Clear</Button>
             </form>
