@@ -8,11 +8,14 @@ import { useSelector } from "react-redux";
 
 
 export default function LinearProgressWithLabel(props) {
+  //beautiful bubbles' function
+  const bubblesify = (value) => ((100 / props.project.pals) * props.value);
+
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '100%', mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
+        <LinearProgress variant="determinate" value={bubblesify(props.value)} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(

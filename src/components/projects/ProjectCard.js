@@ -48,7 +48,7 @@ export default function ProjectCard({ project }) {
 
     //pal function
     const addPal = () => {
-      setProgress((prevProgress) => (prevProgress >= project.pals ? 0 : prevProgress + 1));
+      setProgress((prevProgress) => (prevProgress >= project.pals ? prevProgress : prevProgress + 1));
     }
    
   
