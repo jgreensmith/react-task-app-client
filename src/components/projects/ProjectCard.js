@@ -18,14 +18,17 @@ import { Box } from "@mui/system";
 
 export default function ProjectCard({ project }) {
 
+  //context
     const { setCurrentId } = useContext(IdContext);
     const { setModalOpen } = useContext(ModalContext);
 
+    // state
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
     const [progress, setProgress] = useState(0);
     const open = Boolean(anchorEl);
     
+    //dropdown functions
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -41,6 +44,11 @@ export default function ProjectCard({ project }) {
       setAnchorEl(null);
       setCurrentId(id);
       setModalOpen(true);
+    }
+
+    //pal function
+    const addPal = () => {
+      setProgress((prevProgress) => (prevProgress >= project.pals ? 0 : prevProgress + 1));
     }
    
   
@@ -123,7 +131,7 @@ export default function ProjectCard({ project }) {
               </Typography>
             </CardContent>
             <CardActions disableSpacing sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-              <Button aria-label="add to favorites">
+              <Button aria-label="add to favorites" onClick={addPal}>
                 <EmojiPeopleIcon />Offer to Help
               </Button>
               
