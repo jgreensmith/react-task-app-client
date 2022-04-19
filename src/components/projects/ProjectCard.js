@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Menu, MenuItem, Stack, toolbarClasses, Typography, CircularProgress } from "@mui/material";
@@ -13,6 +13,8 @@ import { ExpandMore } from "@mui/icons-material";
 import { deleteProject } from "../../actions/projects";
 import { IdContext } from "../../utils/IdContext";
 import { ModalContext } from "../../utils/ModalContext";
+import LinearProgressWithLabel from "../LinearProgress";
+import { Box } from "@mui/system";
 
 export default function ProjectCard({ project }) {
 
@@ -21,6 +23,7 @@ export default function ProjectCard({ project }) {
 
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
+    const [progress, setProgress] = useState(0);
     const open = Boolean(anchorEl);
     
     const handleClick = (event) => {
@@ -39,6 +42,8 @@ export default function ProjectCard({ project }) {
       setCurrentId(id);
       setModalOpen(true);
     }
+   
+  
 
     return(
         <Card >
@@ -50,6 +55,11 @@ export default function ProjectCard({ project }) {
                   }
                   action={
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <div style={{padding: '18px 10px 5px 10px'}}>
+                        <Box sx={{ width: '200px' }}>
+                          <LinearProgressWithLabel value={progress} project={project} />
+                        </Box>
+                      </div>
                       <div style={{padding: '18px 10px 5px 10px'}}>
                         <GroupIcon />
                       </div>
