@@ -49,45 +49,49 @@ export default function ProjectCard({ project }) {
                     </Avatar>
                   }
                   action={
-                    <>
-                    <GroupIcon />
-                    <Tooltip 
-                      sx={{[`&.${tooltipClasses.tooltip}`]: {
-                        backgroundColor: "#fff"
-                      }}}
-                      title={
-                        <Typography variant="button" >
-                        Deadline: 2 days
-                        </Typography>
-                      }
-                    >
-                      <TimerIcon />
-                    </Tooltip>
-                    
-                    <IconButton
-                      aria-label="settings"
-                      id="basic-button"
-                      aria-controls={open ? 'basic-menu' : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open ? 'true' : undefined}
-                      onClick={handleClick}
-                     >
-                      <MoreVertIcon />
-                    </IconButton>
-                    <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      MenuListProps={{
-                        'aria-labelledby': 'basic-button',
-                      }}
-                    >
-                      <MenuItem onClick={() => handleEdit(project._id)}>Edit Project</MenuItem>
-                      <MenuItem onClick={() => handleDelete(project._id)}>Delete Project</MenuItem>
-                      <MenuItem onClick={handleClose}>Save Project</MenuItem>
-                    </Menu>
-                    </>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <div style={{padding: '18px 10px 5px 10px'}}>
+                        <GroupIcon />
+                      </div>
+                      <div style={{padding: '18px 10px'}}>
+                        <Tooltip 
+                          sx={{[`&.${tooltipClasses.tooltip}`]: {
+                            backgroundColor: "#fff"
+                          }}}
+                          title={
+                            <Typography variant="button" >
+                            Deadline: 2 days
+                            </Typography>
+                          }
+                          >
+                          <TimerIcon />
+                        </Tooltip>
+                      </div>
+                      
+                      <IconButton
+                        aria-label="settings"
+                        id="basic-button"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                      >
+                        <MoreVertIcon />
+                      </IconButton>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          'aria-labelledby': 'basic-button',
+                        }}
+                      >
+                        <MenuItem onClick={() => handleEdit(project._id)}>Edit Project</MenuItem>
+                        <MenuItem onClick={() => handleDelete(project._id)}>Delete Project</MenuItem>
+                        <MenuItem onClick={handleClose}>Save Project</MenuItem>
+                      </Menu>
+                    </div>
                     
                   }
                   title={project.title}
