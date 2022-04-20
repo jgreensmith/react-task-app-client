@@ -85,17 +85,19 @@ export default function ProjectCard({ project }) {
                           <TimerIcon />
                         </Tooltip>
                       </div>
-                      
-                      <IconButton
-                        aria-label="settings"
-                        id="basic-button"
-                        aria-controls={open ? 'basic-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
-                      >
-                        <MoreVertIcon />
-                      </IconButton>
+                      <div style={{margin: 'auto'}}>
+
+                        <IconButton
+                          aria-label="settings"
+                          id="basic-button"
+                          aria-controls={open ? 'basic-menu' : undefined}
+                          aria-haspopup="true"
+                          aria-expanded={open ? 'true' : undefined}
+                          onClick={handleClick}
+                          >
+                          <MoreVertIcon />
+                        </IconButton>
+                      </div>
                       <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}

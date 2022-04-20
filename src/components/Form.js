@@ -20,7 +20,7 @@ export default function Form() {
         title: '',
         message: '',
         pals: 0,
-        date: new Date()
+        date: ''
     });
     //update posts
     const { currentId, setCurrentId } = useContext(IdContext);
@@ -49,7 +49,7 @@ export default function Form() {
             title: '',
             message: '',
             pals: 0,
-            date: new Date()
+            date: ''
         })
         setModalOpen(false);
     }
@@ -113,9 +113,15 @@ export default function Form() {
                 <div style={{ padding: '5px 0 15px 15px'}}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateTimePicker
-                            renderInput={(props) => <TextField {...props} />}
+                            renderInput={
+                                (props) => 
+                                    <TextField {...props}
+                                        name="date"
+                                        value={form.date}
+                                        onChange={handleChange}
+                                    />
+                            }
                             label="Project Deadline"
-                            name='date'
                             value={value}
                             onChange={(newValue) => {
                                 setValue(newValue);
