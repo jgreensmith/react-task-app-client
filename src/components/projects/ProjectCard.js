@@ -51,8 +51,15 @@ export default function ProjectCard({ project }) {
     const addPal = () => {
       setProgress((prevProgress) => (prevProgress >= project.pals ? prevProgress : prevProgress + 1));
     }
-    const calcPal = (a, b) => {
-      return a - b;
+
+    const calcPal = (a, b, plural = 's') => {
+      const statement = "More Pal";
+      if(a === b) {
+        return `No ${statement}${plural}`;
+      } else if(a - b === 1){
+        plural = '';
+      } 
+      return `${a - b} ${statement}${plural}`;  
     }
    
   
@@ -71,7 +78,7 @@ export default function ProjectCard({ project }) {
                         <Tooltip
                           title={
                             <Typography variant="text" component="h3" >
-                              {`${calcPal( project.pals , progress )} More Pals Required`}
+                              {`${calcPal( project.pals , progress )} Required`}
                             </Typography>
                           }
                         >
