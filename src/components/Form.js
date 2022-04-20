@@ -14,13 +14,13 @@ import { InputContainer } from "../utils/styles";
 
 export default function Form() {
     const dispatch = useDispatch();
-    const [value, setValue] = useState(new Date());
+    //const [dateValue, setDateValue] = useState(new Date());
 
     const [form, setForm] = useState({
         title: '',
         message: '',
         pals: 0,
-        date: ''
+        date: new Date()
     });
     //update posts
     const { currentId, setCurrentId } = useContext(IdContext);
@@ -43,13 +43,18 @@ export default function Form() {
             [name]: value
         })
     }
+    // const handleDateChange = (date) => {
+    //     setForm({
+    //         date: date
+    //     })
+    // }
     const clear = () => {
         setCurrentId(null);
         setForm({
             title: '',
             message: '',
             pals: 0,
-            date: ''
+            date: new Date()
         })
         setModalOpen(false);
     }
@@ -115,16 +120,13 @@ export default function Form() {
                         <DateTimePicker
                             renderInput={
                                 (props) => 
-                                    <TextField {...props}
-                                        name="date"
-                                        value={form.date}
-                                        onChange={handleChange}
-                                    />
+                                    <TextField {...props} />
                             }
                             label="Project Deadline"
-                            value={value}
+                            //make sure value is controlled (not undefined)
+                            value={form.date ? form.date : ""}
                             onChange={(newValue) => {
-                                setValue(newValue);
+                                setForm({ ...form, date: newValue });
                             }}
                         />
                     </LocalizationProvider>
