@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 export default function LinearProgressWithLabel(props) {
   //beautiful bubbles' function
-  const bubblesify = (value) => ((100 / props.project.pals) * props.value);
+  const bubblesify = (value) => ((100 / props.project.pals) * value);
 
 
   return (

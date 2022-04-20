@@ -43,11 +43,7 @@ export default function Form() {
             [name]: value
         })
     }
-    // const handleDateChange = (date) => {
-    //     setForm({
-    //         date: date
-    //     })
-    // }
+
     const clear = () => {
         setCurrentId(null);
         setForm({

@@ -47,9 +47,12 @@ export default function ProjectCard({ project }) {
       setModalOpen(true);
     }
 
-    //pal function
+    //pal functions
     const addPal = () => {
       setProgress((prevProgress) => (prevProgress >= project.pals ? prevProgress : prevProgress + 1));
+    }
+    const calcPal = (a, b) => {
+      return a - b;
     }
    
   
@@ -65,21 +68,26 @@ export default function ProjectCard({ project }) {
                   action={
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <div style={{padding: '18px 10px 5px 10px', width: '100%'}}>
-                        <Box sx={{ width: { sm: '200px', vs: '150px', xs: '100px' } }}>
-                          <LinearProgressWithLabel value={progress} project={project} />
-                        </Box>
+                        <Tooltip
+                          title={
+                            <Typography variant="text" component="h3" >
+                              {`${calcPal( project.pals , progress )} More Pals Required`}
+                            </Typography>
+                          }
+                        >
+                          <Box sx={{ width: { sm: '200px', vs: '150px', xs: '100px' } }}>
+                            <LinearProgressWithLabel value={progress} project={project} />
+                          </Box>
+                        </Tooltip>
                       </div>
                       <div style={{padding: '18px 10px 5px 10px'}}>
                         <GroupIcon />
                       </div>
                       <div style={{padding: '18px 10px'}}>
                         <Tooltip 
-                          sx={{[`&.${tooltipClasses.tooltip}`]: {
-                            backgroundColor: "#fff"
-                          }}}
                           title={
-                            <Typography variant="text" >
-                            {`Deadline: ${moment(project.date).format("dddd, MMMM Do YYYY, h:mm a")}`}
+                            <Typography variant="text" component="h3" >
+                            {`DEADLINE: ${moment(project.date).format("dddd, MMMM Do YYYY, h:mm a")}`}
                             </Typography>
                           }
                           >
