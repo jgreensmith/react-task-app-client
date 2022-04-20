@@ -15,6 +15,7 @@ import { IdContext } from "../../utils/IdContext";
 import { ModalContext } from "../../utils/ModalContext";
 import LinearProgressWithLabel from "../LinearProgress";
 import { Box } from "@mui/system";
+import moment from "moment";
 
 export default function ProjectCard({ project }) {
 
@@ -77,8 +78,8 @@ export default function ProjectCard({ project }) {
                             backgroundColor: "#fff"
                           }}}
                           title={
-                            <Typography variant="button" >
-                            Deadline: 2 days
+                            <Typography variant="text" >
+                            {`Deadline: ${moment(project.date).format("dddd, MMMM Do YYYY, h:mm a")}`}
                             </Typography>
                           }
                           >
