@@ -1,5 +1,5 @@
 import * as api from '../api';
-import { CREATE, DELETE, FETCH_ALL, UPDATE } from '../utils/actionTypes';
+import { CREATE, DELETE, FETCH_ALL, UPDATE, ADD_PAL } from '../utils/actionTypes';
 
 export const getProjects = () => async (dispatch) => {
     try {
@@ -40,5 +40,15 @@ export const updateProject = (id, post) => async (dispatch) => {
         dispatch({ type: UPDATE, payload: data });
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const addPal = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.addPal(id);
+
+        dispatch({ type: ADD_PAL, payload: data})
+    } catch (error) {
+        console.log(error.message);
     }
 }

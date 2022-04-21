@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
 /* eslint-disable import/no-anonymous-default-export */
-import { CREATE, DELETE, FETCH_ALL, UPDATE } from '../utils/actionTypes';
+import { ADD_PAL, CREATE, DELETE, FETCH_ALL, UPDATE } from '../utils/actionTypes';
 
 //projects is the array used to map into front end
 //action type is CREATE, FETCH_ALL...
@@ -12,6 +12,8 @@ export default (projects = [], action) => {
             return projects.filter((project) => project._id !== action.payload);
         case UPDATE:
             return projects.map((project) => project._id === action.payload._id ? action.payload : project);
+        case ADD_PAL:
+            return projects.map((project) => project._id === action.payload._id ? action.payload : project); 
         case FETCH_ALL: 
             return action.payload;  
         case CREATE: 

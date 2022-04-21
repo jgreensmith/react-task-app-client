@@ -9,7 +9,7 @@ import ProjectCard from "./ProjectCard";
 export default function Projects() {
   //select projects array from redux store when page is loaded (useEffect on App.js)
   const projects = useSelector((state) => state.projects);
-
+  console.log(projects)
 
   return (
     

@@ -10,7 +10,7 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import CommentIcon from '@mui/icons-material/Comment';
 import { ExpandMore } from "@mui/icons-material";
 
-import { deleteProject } from "../../actions/projects";
+import { addPal, deleteProject } from "../../actions/projects";
 import { IdContext } from "../../utils/IdContext";
 import { ModalContext } from "../../utils/ModalContext";
 import LinearProgressWithLabel from "../LinearProgress";
@@ -48,9 +48,9 @@ export default function ProjectCard({ project }) {
     }
 
     //pal functions
-    const addPal = () => {
-      setProgress((prevProgress) => (prevProgress >= project.pals ? prevProgress : prevProgress + 1));
-    }
+    // const addPal = () => {
+    //   setProgress((prevProgress) => (prevProgress >= project.pals ? prevProgress : prevProgress + 1));
+    // }
 
     const calcPal = (a, b, plural = 's') => {
       const statement = "More Pal";
@@ -83,7 +83,7 @@ export default function ProjectCard({ project }) {
                           }
                         >
                           <Box sx={{ width: { sm: '200px', vs: '150px', xs: '100px' } }}>
-                            <LinearProgressWithLabel value={progress} project={project} />
+                            <LinearProgressWithLabel value={project.palCount} project={project} />
                           </Box>
                         </Tooltip>
                       </div>
@@ -149,7 +149,7 @@ export default function ProjectCard({ project }) {
               </Typography>
             </CardContent>
             <CardActions disableSpacing sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-              <Button aria-label="add to favorites" onClick={addPal}>
+              <Button aria-label="add to favorites" onClick={() => addPal(project._id)}>
                 <EmojiPeopleIcon />Offer to Help
               </Button>
               
