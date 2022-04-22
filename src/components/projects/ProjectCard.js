@@ -26,7 +26,7 @@ export default function ProjectCard({ project }) {
     // state
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
-    const [progress, setProgress] = useState(0);
+    //const [progress, setProgress] = useState(0);
     const open = Boolean(anchorEl);
     
     //dropdown functions
@@ -78,7 +78,7 @@ export default function ProjectCard({ project }) {
                         <Tooltip
                           title={
                             <Typography variant="text" component="h3" >
-                              {`${calcPal( project.pals , progress )} Required`}
+                              {`${calcPal( project.pals , project.palCount )} Required`}
                             </Typography>
                           }
                         >
