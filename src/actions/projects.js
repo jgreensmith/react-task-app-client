@@ -49,6 +49,6 @@ export const addPal = (id) => async (dispatch) => {
 
         dispatch({ type: ADD_PAL, payload: data})
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
     }
 }

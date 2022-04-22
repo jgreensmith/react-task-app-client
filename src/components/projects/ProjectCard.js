@@ -149,7 +149,7 @@ export default function ProjectCard({ project }) {
               </Typography>
             </CardContent>
             <CardActions disableSpacing sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-              <Button aria-label="add to favorites" onClick={() => addPal(project._id)}>
+              <Button aria-label="add to favorites" onClick={() => dispatch(addPal(project._id))}>
                 <EmojiPeopleIcon />Offer to Help
               </Button>
               

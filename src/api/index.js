@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //const url = 'https://project-pals.herokuapp.com/projects';
 
-const url = 'http://localhost:5000/projects'
+const url = 'http://localhost:5000/projects';
 
 export const fetchProjects = () => axios.get(url);
 export const createProject = (newProj) => axios.post(url, newProj);
