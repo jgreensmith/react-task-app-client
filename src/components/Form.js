@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button, Divider, FormControl, InputLabel, MenuItem, Paper, Select, TextField, Toolbar, Typography } from "@mui/material";
+import { Button, DialogActions, DialogContent, DialogTitle, Divider, FormControl, IconButton, InputLabel, MenuItem, Paper, Select, TextField, Toolbar, Typography } from "@mui/material";
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import CloseIcon from '@mui/icons-material/Close';
 
 import { createProject, updateProject } from "../actions/projects";
 import { IdContext } from "../utils/IdContext";
@@ -67,14 +68,20 @@ export default function Form() {
 
 
     return(
-        <Paper >
-
+        <Paper  sx={{minWidth: "373px"}}>
+            <DialogTitle sx={{m: 0, p: 2, display: "flex", justifyContent: "space-between"}}>
                 <Typography variant="h6" align="center">Find some Pals for your Project</Typography>
-                <hr />
-            <FormBox>
-                <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-                    
+                <IconButton
+                    aria-label="close"
+                    onClick={clear}
+                    sx={{ml: 2}}
+                >
+                    <CloseIcon />
+                </IconButton>
+            </DialogTitle>
 
+                <form autoComplete="off" noValidate onSubmit={handleSubmit}>
+            <DialogContent dividers>
                     <InputContainer>
                         <TextField 
                             name="title"
@@ -82,7 +89,7 @@ export default function Form() {
                             variant="outlined"
                             label="Title"
                             fullWidth
-                            sx={{m:2}}
+                            sx={{m:2, pr:3}}
                             onChange={handleChange}
                             />
                     </InputContainer>
@@ -93,12 +100,12 @@ export default function Form() {
                             variant="outlined"
                             label="Message"
                             fullWidth
-                            sx={{m:2}}
+                            sx={{m:2, pr:3}}
                             onChange={handleChange}
                             />
                     </InputContainer>
                     <InputContainer>
-                        <FormControl fullWidth sx={{m:2}}>
+                        <FormControl fullWidth sx={{m:2, pr:3}}>
                             <InputLabel id="demo-simple-select-label">Pals</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -132,10 +139,13 @@ export default function Form() {
                                 />
                         </LocalizationProvider>
                     </div>
+
+                </DialogContent>
+                <DialogActions>
                     <Button  variant="contained" color="primary" size="large" type="submit" fullWidth sx={{p:2}}>Submit</Button>
                     <Button onClick={clear} variant="text" color="secondary" size="small"  fullWidth sx={{p:2}}>Clear</Button>
+                </DialogActions>
                 </form>
-            </FormBox>
         </Paper>
     )
 }
