@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { Button, Container } from "@mui/material";
+import { Button, Container, Dialog, useMediaQuery, useTheme } from "@mui/material";
 import { useDispatch } from 'react-redux';
-import Modal from "react-modal";
 
 import Projects from "./projects/Projects";
 import Form from "./Form";
@@ -14,15 +13,18 @@ import { ModalContext } from "../utils/ModalContext";
 
 import "../Home.css";
 
-Modal.setAppElement("body");
-
 
 function App() {
+  //dispatch / context
   const dispatch = useDispatch();
   const { currentId } = useContext(IdContext);
   const { modalOpen, setModalOpen } = useContext(ModalContext);
 
-  //call fetch projects api when dispatch function is called
+  //mui hooks
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+   //call fetch projects api when dispatch function is called
   useEffect(() => {
     dispatch(getProjects());
   }, [currentId, dispatch]);
@@ -37,14 +39,15 @@ function App() {
         </Box>
         <Projects  />
       </Container>
-      <Modal 
-        isOpen={modalOpen}
-        onRequestClose={() => setModalOpen(false)}
-        className='modal'
-        overlayClassName='overlay'
+      <Dialog 
+        open={modalOpen}
+        fullScreen={fullScreen}
+        onClose={() => setModalOpen(false)}
+        // className='modal'
+        // overlayClassName='overlay'
       >
         <Form />
-      </Modal>
+      </Dialog>
     </Layout>
   );
 }

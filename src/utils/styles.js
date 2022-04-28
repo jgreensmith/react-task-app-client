@@ -112,6 +112,11 @@ export const ProfileImg = styled("img")({
 
 
 //containers
+export const FormBox = styled('div')({
+  padding: '10px',
+  paddingRight: '25px',
+
+});
 
 export const InputContainer = styled('div')({
   paddingRight: '15px',
