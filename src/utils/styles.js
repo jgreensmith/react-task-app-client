@@ -101,14 +101,6 @@ export const StyledImg = styled("img")({
   width: '100%',
 });
 
-export const PortfolioImg = styled("img")(({ theme }) => ({
-  width: '100%',
-  borderRadius: '10px',
-  boxShadow: theme.shadows[12]
-}));
-export const ProfileImg = styled("img")({
-  borderRadius: '50%',
-});
 
 
 //containers
@@ -126,54 +118,14 @@ export const InputContainer = styled('div')({
 export const CenteredGrid = styled(Grid)({
   display: 'flex', 
   justifyContent: 'center', 
+  alignItems: 'center',
+});
+
+export const CenteredDiv = styled('div')({
+  display: 'flex', 
+  flexDirection: 'column',
+  justifyContent: 'center', 
   alignItems: 'center'
 });
 
-export const PortfolioCard = styled('div')(({theme}) => ({
-  width: '300px',
-  position: 'relative',
-  display: 'flex',
-  justifyContent: 'center',
-  margin: '10px',
 
-}));
-export const PortfolioCardBody = styled('div')(({theme}) => ({
-  width: '300px'
-}));
-export const CardBanner = styled('div')(({theme}) => ({
-  width: '95%',
-  position: 'absolute',
-  marginBottom:  '5px',
-  padding: '7px 10px',
-  display: 'flex',
-  alignItems: 'center',
-  background: theme.palette.background.dark,
-  backdropFilter: 'blur(10px)',
-  borderRadius: '10px',
-  
-  opacity: 0,
-  transition: 'all 0.4s'
-}));
-//hero section
-
-// export const HeroBox = styled('div')({
-//   position: 'relative !important'
-// });
-
-export const HeroSlide = styled('div')({
-  minHeight: '90vh',
-  backgroundSize: 'cover',
-  backgroundPosition: '50%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  backgroundColor: 'inherit',
-  paddingTop: '3rem',
-  paddingBottom: '3rem',
-  width: '100%',
-});
-
-export const HeroBox = styled('div')({
-  backgroundColor: "#330033",
-});

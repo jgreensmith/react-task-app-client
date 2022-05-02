@@ -1,26 +1,2 @@
-.overlay {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-.modal {
-  /* background-color: #fff; */
-  max-width: 70%;
-  max-height: 90%;
-  box-shadow: 0 3px 15px -3px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-/* @media (max-width: 500px) {
-  .modal {
-    width: 100vw;
-    height: 100%;
-    margin: 0;
-    max-width: none;
-  }
-} */
+
+
