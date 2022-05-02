@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import GoogleIcon from '@mui/icons-material/Google';
 
-import { CenteredDiv, InputContainer } from '../utils/styles';
+import { CenteredDiv, Gradient, InputContainer } from '../utils/styles';
 import Layout from "./Layout";
 
 
@@ -64,7 +64,6 @@ const Auth = () => {
                       </InputContainer>
                       
                       <CenteredDiv>
-
                         <Button  variant="contained" color="primary" size="large" type="submit"  sx={{p:'10px 40px', borderRadius: '50px'}}>Sign In</Button>
                       </CenteredDiv>
                   
@@ -73,9 +72,9 @@ const Auth = () => {
                 </CenteredDiv>
                 </Grid>
                 <Grid item xs={5}>
-                  <CenteredDiv sx={{ p: 2, backgroundColor: 'primary.main', height: '100%', borderRadius: '0 10px 10px 0' }}>
-                    
-                  </CenteredDiv>
+                  <Gradient>
+                    butt
+                  </Gradient>                    
                 </Grid>
           </Grid>
         </Paper>

@@ -127,5 +127,19 @@ export const CenteredDiv = styled('div')({
   justifyContent: 'center', 
   alignItems: 'center'
 });
+export const Gradient = styled('div')({
+  display: 'flex', 
+  flexDirection: 'column',
+  justifyContent: 'center', 
+  alignItems: 'center',
+  background: 'rgb(130,32,255)',
+  background: 'linear-gradient(90deg, rgba(130,32,255,1) 50%, rgba(0,212,255,1) 100%)',
+  padding: 2,
+  height: '100%',
+  borderRadius: '0 10px 10px 0'
+
+});
+
+
 
 
