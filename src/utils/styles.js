@@ -72,12 +72,11 @@ export const FilterButton = styled(Button)(({ theme }) => ({
 
 export const MainButton = styled(Button)(({ theme }) => ({
   color: theme.palette.primary.text, 
-  fontSize: '1.8rem',
   ":hover": { 
     background: 'none',
     color: theme.palette.secondary.main,
   },
-  textTransform: 'none',
+  textTransform: 'capitalize',
 
 }));
 

@@ -31,8 +31,8 @@ function App() {
 
   return (
     <Layout>
-      <Container maxWidth="sm">
-        <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 2 }} >
+      <Container maxWidth="sm" sx={{mt: 2}}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-around', p: 3 }} >
           <SvgButton onClick={() => setModalOpen(true)}>
             Need some pals for my project
           </SvgButton>

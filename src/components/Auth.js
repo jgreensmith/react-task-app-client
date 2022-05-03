@@ -43,7 +43,7 @@ const Auth = () => {
                   <CenteredDivColumn sx={{ m: 0, p: 2 }}>
                     <Typography variant="h1" align="center">{isSignUp ? 'Sign Up' : 'Log In'} and Find Some Pals</Typography>
                     <Button variant='contained' startIcon={<GoogleIcon />} sx={{backgroundColor: "#000000e0"}} >
-                      <Typography variant="body2" align='center' sx={{textTransform: 'capitalize'}}>Log in With Google</Typography> 
+                      <Typography variant="body2" align='center' sx={{textTransform: 'capitalize'}}>{isSignUp ? 'Sign Up' : 'Log In'} With Google</Typography> 
                     </Button>
                   </CenteredDivColumn>
                   <Divider />
@@ -87,29 +87,6 @@ const Auth = () => {
                             onChange={handleChange}
                             />
                     </InputContainer>
-                    {/* <InputContainer>
-                        <TextField
-                            name="password"
-                            value={authForm.password}
-                            variant="outlined"
-                            type={showPassword ? 'text' : 'password'}
-                            label="Password"
-                            fullWidth
-                            sx={{m:2, pr:3}}
-                            onChange={handleChange}
-                            inputProps={{
-                              
-                                endAdornment: (
-                                <InputAdornment position='end'>
-                                  <IconButton onClick={handleShowPassword}>
-                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                                  </IconButton>
-                                </InputAdornment>
-                                )
-                              
-                            }}
-                            />
-                    </InputContainer> */}
                     <InputContainer sx={{p: '0 30px 0 8px'}}>
                     <FormControl fullwidth sx={{ m: 1, width: '100%' }} variant="outlined">
                       <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -164,7 +141,7 @@ const Auth = () => {
                     }
                     
                     <CenteredDivColumn>
-                      <Button  variant="contained" color="primary" size="large" type="submit"  sx={{p:'10px 40px', borderRadius: '50px'}}>Sign In</Button>
+                      <Button  variant="contained" color="primary" size="large" type="submit"  sx={{p:'10px 40px', borderRadius: '50px'}}>{isSignUp ? 'Sign Up' : 'Log In'}</Button>
                     </CenteredDivColumn>
                 
                   </form>
