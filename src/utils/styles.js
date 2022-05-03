@@ -133,8 +133,8 @@ export const Gradient = styled('div')({
   justifyContent: 'center', 
   alignItems: 'center',
   background: 'rgb(130,32,255)',
-  background: 'linear-gradient(90deg, rgba(130,32,255,1) 50%, rgba(0,212,255,1) 100%)',
-  padding: 2,
+  background: 'linear-gradient(180deg, rgba(130,32,255,1) 50%, rgba(176,32,255,1) 100%)',
+  padding: '10px 25px',
   height: '100%',
   borderRadius: '0 10px 10px 0'
 

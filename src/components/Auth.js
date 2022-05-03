@@ -73,7 +73,11 @@ const Auth = () => {
                 </Grid>
                 <Grid item xs={5}>
                   <Gradient>
-                    butt
+                    <Typography variant="h1" align="center" sx={{color: 'primary.light'}}>Don't Have an Account?</Typography>
+                    <Typography variant="body2" align="center" gutterBottom={true} sx={{color: 'primary.light'}}>Register and find some pals</Typography>
+                    <CenteredDiv sx={{pt: 2}}>
+                      <Button  variant="contained" size="large" type="submit"  sx={{p:'10px 40px', borderRadius: '50px', backgroundColor: 'primary.light', color: 'secondary.main'}}>Sign Up</Button>
+                    </CenteredDiv>
                   </Gradient>                    
                 </Grid>
           </Grid>
