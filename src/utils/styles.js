@@ -121,10 +121,15 @@ export const CenteredGrid = styled(Grid)({
   alignItems: 'center',
 });
 
-export const CenteredDiv = styled('div')({
+export const CenteredDivColumn = styled('div')({
   display: 'flex', 
   flexDirection: 'column',
   justifyContent: 'center', 
+  alignItems: 'center'
+});
+export const CenteredDiv = styled('div')({
+  display: 'flex', 
+  justifyContent: 'space-around', 
   alignItems: 'center'
 });
 export const Gradient = styled('div')({
