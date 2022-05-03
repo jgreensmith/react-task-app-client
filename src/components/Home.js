@@ -28,6 +28,9 @@ function App() {
   useEffect(() => {
     dispatch(getProjects());
   }, [currentId, dispatch]);
+  useEffect(() => {
+    dispatch(getProjects());
+  }, []);
 
   return (
     <Layout>
