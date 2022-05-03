@@ -20,7 +20,7 @@ import {
     useScrollTrigger
 } from '@mui/material';
 import { Box } from '@mui/system';
-import { LogoImg, MainButton } from '../utils/styles';
+import { LogoImg, MainButton, ThemeAppBar } from '../utils/styles';
 
 
 
@@ -49,7 +49,7 @@ const Navbar = (props) => {
         <React.Fragment>
             <CssBaseline />
             <HideOnScroll {...props}>
-                <AppBar sx={{ bgcolor: 'primary.main' }}>
+                <ThemeAppBar>
                     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                         
                             <MainButton >
@@ -61,7 +61,7 @@ const Navbar = (props) => {
                        
 
                     </Toolbar>
-                </AppBar>
+                </ThemeAppBar>
             </HideOnScroll>
             
         </React.Fragment>

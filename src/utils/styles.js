@@ -1,4 +1,4 @@
-import { Button, Card, Grid, ImageListItemBar } from '@mui/material';
+import { AppBar, Button, Card, Grid, ImageListItemBar } from '@mui/material';
 import { createTheme, styled } from '@mui/material/styles';
 import { Box, display } from '@mui/system';
 
@@ -138,6 +138,10 @@ export const Gradient = styled('div')({
   height: '100%',
   borderRadius: '0 10px 10px 0'
 
+});
+export const ThemeAppBar = styled(AppBar)({
+  background: 'rgb(130,32,255)',
+  background: 'linear-gradient(180deg, rgba(130,32,255,1) 50%, rgba(176,32,255,1) 100%)',
 });
 
 
