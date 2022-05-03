@@ -1,7 +1,9 @@
-import { Button, Container, Divider, FormControl, Grid, Grow, InputLabel, MenuItem, Paper, Select, TextField, Typography } from '@mui/material';
+import { Button, Container, Divider, FormControl, Grid, Grow, InputLabel, MenuItem, Paper, Select, TextField, Typography, InputAdornment, IconButton, OutlinedInput } from '@mui/material';
 import React, { useState } from 'react';
 
 import GoogleIcon from '@mui/icons-material/Google';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { CenteredDiv, CenteredDivColumn, Gradient, InputContainer } from '../utils/styles';
 import Layout from "./Layout";
@@ -9,10 +11,15 @@ import Layout from "./Layout";
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
   const [authForm, setAuthForm] = useState({
     username: '',
     password: ''
   });
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  }
 
   const switchMode = () => {
     setIsSignUp(!isSignUp);
@@ -80,32 +87,79 @@ const Auth = () => {
                             onChange={handleChange}
                             />
                     </InputContainer>
-                    <InputContainer>
+                    {/* <InputContainer>
                         <TextField
                             name="password"
                             value={authForm.password}
                             variant="outlined"
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             label="Password"
                             fullWidth
                             sx={{m:2, pr:3}}
                             onChange={handleChange}
+                            inputProps={{
+                              
+                                endAdornment: (
+                                <InputAdornment position='end'>
+                                  <IconButton onClick={handleShowPassword}>
+                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                  </IconButton>
+                                </InputAdornment>
+                                )
+                              
+                            }}
                             />
-                    </InputContainer>
+                    </InputContainer> */}
+                    <InputContainer sx={{p: '0 30px 0 8px'}}>
+                    <FormControl fullwidth sx={{ m: 1, width: '100%' }} variant="outlined">
+                      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                      <OutlinedInput
+                        id="outlined-adornment-password"
+                        type={showPassword ? 'text' : 'password'}
+                        value={authForm.password}
+                        onChange={handleChange}
+                        fullwidth
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleShowPassword}
+                              edge="end"
+                            >
+                              {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                        label="Password"
+                      />
+                  </FormControl>
+                  </InputContainer>
                     {
                       isSignUp && (
-                        <InputContainer>
-                          <TextField
-                              name="password"
-                              value={authForm.password}
-                              variant="outlined"
-                              type="password"
-                              label="Confirm Password"
-                              fullWidth
-                              sx={{m:2, pr:3}}
-                              onChange={handleChange}
-                              />
-                        </InputContainer>
+                        <InputContainer sx={{p: '0 30px 0 8px'}}>
+                    <FormControl fullwidth sx={{ m: 1, width: '100%' }} variant="outlined">
+                      <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
+                      <OutlinedInput
+                        id="outlined-adornment-password"
+                        type={showPassword ? 'text' : 'password'}
+                        value={authForm.password}
+                        onChange={handleChange}
+                        fullwidth
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleShowPassword}
+                              edge="end"
+                            >
+                              {showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                        label="Confirm Password"
+                      />
+                  </FormControl>
+                  </InputContainer>
                       )
                     }
                     
