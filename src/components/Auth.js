@@ -1,5 +1,6 @@
 import { Button, Container, Divider, FormControl, Grid, Grow, InputLabel, MenuItem, Paper, Select, TextField, Typography, InputAdornment, IconButton, OutlinedInput } from '@mui/material';
 import React, { useState } from 'react';
+import { GoogleLogin } from 'react-google-login';
 
 import GoogleIcon from '@mui/icons-material/Google';
 import Visibility from '@mui/icons-material/Visibility';
@@ -7,6 +8,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { CenteredDiv, CenteredDivColumn, Gradient, InputContainer } from '../utils/styles';
 import Layout from "./Layout";
+import Icon from './svg/Icon';
 
 
 const Auth = () => {
@@ -30,6 +32,18 @@ const Auth = () => {
   const handleChange = () => {
 
   }
+  //google 0auth 
+
+  const googleSuccess = (res) => {
+    console.log(res);
+  };
+
+  const googleFailure = () => {
+    console.log("google sign in unsuccesful")
+  };
+
+
+
   return (
       <Layout>
         <Container sx={{ height: '90vh', display: "flex", justifyContent: "center", alignItems: 'center' }}>
@@ -42,9 +56,19 @@ const Auth = () => {
                 <Container>
                   <CenteredDivColumn sx={{ m: 0, p: 2 }}>
                     <Typography variant="h1" align="center">{isSignUp ? 'Sign Up' : 'Log In'} and Find Some Pals</Typography>
-                    <Button variant='contained' startIcon={<GoogleIcon />} sx={{backgroundColor: "#000000e0"}} >
-                      <Typography variant="body2" align='center' sx={{textTransform: 'capitalize'}}>{isSignUp ? 'Sign Up' : 'Log In'} With Google</Typography> 
-                    </Button>
+                    <GoogleLogin 
+                      clientId="541538720752-bkhgfk1gmhdr2lmg2p4qnu90jk0hubm2.apps.googleusercontent.com"
+                      render={(renderProps) => (
+                        <Button variant='contained' startIcon={<Icon />} sx={{backgroundColor: "#000000e0"}} onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                          <Typography variant="body2" align='center' sx={{textTransform: 'capitalize'}}>{isSignUp ? 'Sign Up' : 'Log In'} With Google</Typography> 
+                        </Button>
+                      )}
+                      onSuccess={googleSuccess}
+                      onFailure={googleFailure}
+                      cookiePolicy="single_host_origin"
+
+                    />
+                    
                   </CenteredDivColumn>
                   <Divider />
 

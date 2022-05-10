@@ -13,7 +13,7 @@ import { ExpandMore } from "@mui/icons-material";
 import { addPal, deleteProject } from "../../actions/projects";
 import { IdContext } from "../../utils/IdContext";
 import { ModalContext } from "../../utils/ModalContext";
-import LinearProgressWithLabel from "../LinearProgress";
+import LinearProgressWithLabel from "./LinearProgress";
 import { Box } from "@mui/system";
 import moment from "moment";
 

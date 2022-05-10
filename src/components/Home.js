@@ -7,7 +7,7 @@ import Form from "./Form";
 import { getProjects } from "../actions/projects";
 import Layout from "./Layout";
 import { IdContext } from "../utils/IdContext";
-import SvgButton from "./SvgButton";
+import SvgButton from "./svg/SvgButton";
 import { Box } from "@mui/system";
 import { ModalContext } from "../utils/ModalContext";
 
